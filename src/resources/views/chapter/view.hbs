@@ -1,0 +1,76 @@
+<h3 class="mt-4">Danh sách chương "{{course.name}}"</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Tên Chương</th>
+      <th scope="col">Thời gian tạo</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each chapters}}
+      <tr>
+        <th scope="row">{{sum @index 1}}</th>
+        <td>{{this.title}}</td>
+        <td>{{this.createdAt}}</td>
+        <td>
+          <a href="/chapter/{{this._id}}/edit" class="btn btn-link">Sửa</a>
+          {{! <a href="" class="btn btn-link">Xem</a>
+          <a href="" class="btn btn-link">Thêm</a> }}
+          <a
+            href=""
+            data-bs-id="{{this._id}}"
+            class="btn btn-link"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >Xóa</a>
+
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Xác nhận xóa</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        Bạn có muốn xóa bản ghi này không?
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+        >Hủy</button>
+        <button id="btn-delete-course" type="button" class="btn btn-danger">Xác
+          nhận</button>
+      </div>
+    </div>
+  </div>
+</div>
+<form name="delete-form" method="POST"></form>
+<script>
+  var deleteForm = document.forms['delete-form']; let chapterId;
+  $('#exampleModal').on('show.bs.modal',function(e){ var button
+  =$(e.relatedTarget); chapterId = button.data('bs-id') ; }); let btnDelete =
+  document.querySelector('#btn-delete-course') ;btnDelete.onclick = function(){
+  deleteForm.action = '/chapter/'+ chapterId +'?_method=DELETE';
+  deleteForm.submit(); }
+</script>

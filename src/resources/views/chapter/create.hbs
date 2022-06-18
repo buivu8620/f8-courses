@@ -1,0 +1,17 @@
+<div class="mt-4">
+  <h3>Thêm chương cho khóa học</h3>
+</div>
+<form method="POST" action="/course/{{courseId}}/storechapter">
+  <div class="form-floating mb-3">
+    <input type="text" class="form-control" name="number" />
+    <label for="floatingInput">Chương số:</label>
+  </div>
+  <div class="form-floating mb-3">
+    <input type="text" class="form-control" name="title" />
+    <label for="floatingInput">Tiêu đề chương</label>
+  </div>
+
+  <div class="mt-3">
+    <button type="submit" class="btn btn-primary">Thêm Chương</button>
+  </div>
+</form>

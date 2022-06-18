@@ -1,0 +1,34 @@
+<form
+  class="mt-4"
+  method="post"
+  action="/me/save-edit?_method=PUT"
+  enctype="multipart/form-data"
+>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Name:</label>
+    <input type="text" class="form-control" name="name" value="{{user.name}}" />
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Introduce:</label>
+    <textarea
+      rows="4"
+      class="form-control"
+      name="introduce"
+    >{{user.introduce}}</textarea>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Avatar:</label>
+    <input
+      type="file"
+      class="form-control"
+      name="avatar"
+      accept="image/png, image/jpeg, image/jpg"
+    />
+  </div>
+
+  <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+<script>
+  document.title = "Sửa trang cá nhân"
+</script>

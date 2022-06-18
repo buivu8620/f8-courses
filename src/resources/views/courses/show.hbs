@@ -1,0 +1,78 @@
+<div class="mt-4">
+  <div class="row">
+    <div class="col-md-8">
+      <h2>{{course.name}}</h2>
+      <p>Người đăng: {{user.name}}</p>
+      <p>{{course.description}}</p>
+      <h2>Bạn sẽ học được gì?</h2>
+      {{#if resultsLeft}}
+        <div class="row">
+          <div class="col-md-4">
+            <ul class="">
+              {{#each resultsLeft}}
+                <li>{{this}}</li>
+              {{/each}}
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <ul class="">
+              {{#each results}}
+                <li>{{this}}</li>
+              {{/each}}
+            </ul>
+          </div>
+        </div>
+      {{else}}
+        <ul class="">
+          {{#each results}}
+            <li>{{this}}</li>
+          {{/each}}
+        </ul>
+      {{/if}}
+
+      <h2>Nội dung khóa học</h2>
+      {{#each chapters}}
+
+        <div
+          class="chapters"
+          data-id="{{this._id}}"
+          style="margin-left: 15px;"
+        ><h5>{{this.number}}.
+            {{this.title}}</h5></div>
+
+      {{/each}}
+      {{#if require}}
+        <h2>Yêu cầu</h2>
+        <ul class="">
+          {{#each require}}
+            <li>{{this}}</li>
+          {{/each}}
+        </ul>
+      {{/if}}
+    </div>
+    <div class="col-md-4">
+      <h2>Xem giới thiệu</h2>
+      <iframe
+        width="445"
+        height="250"
+        src="https://www.youtube.com/embed/{{course.youtubeId}}"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.title = "{{course.name}}"; const chapters =
+  document.querySelectorAll('.chapters'); let contents = [];
+  {{#each contents}}
+    contents.push({ownerByChapter:`{{this.ownerByChapter}}`,content:`{{this.content}}`});
+  {{/each}}
+
+  for(chapter of chapters) { for(content of contents){ if(chapter.dataset.id ==
+  content.ownerByChapter){ chapter.insertAdjacentHTML('beforeend',
+  `<p>${content.content}</p>`); } } } console.log(contents);
+</script>

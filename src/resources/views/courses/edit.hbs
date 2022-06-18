@@ -1,0 +1,62 @@
+<div class="mt-4">
+  <h3>Sửa khóa học</h3>
+</div>
+<form method="POST" action="/course/{{course._id}}?_method=PUT">
+  <div class="form-floating mb-3">
+    <input
+      type="text"
+      class="form-control"
+      name="name"
+      value="{{course.name}}"
+      placeholder="name"
+    />
+    <label for="floatingInput">Tên khóa học</label>
+  </div>
+  <div class="form-floating mb-3">
+    <input
+      type="text"
+      class="form-control"
+      name="description"
+      value="{{course.description}}"
+      placeholder="Description"
+    />
+    <label for="floatingInput">Ghi chú</label>
+  </div>
+
+  <div class="mb-3">
+    <textarea
+      rows="4"
+      class="form-control"
+      name="result"
+      placeholder="Kết quả đạt được"
+    >{{course.result}}</textarea>
+  </div>
+
+  <div class="mb-3">
+    <textarea
+      rows="4"
+      class="form-control"
+      name="require"
+      placeholder="Yêu cầu"
+    >{{course.require}}</textarea>
+
+  </div>
+
+  <div class="form-floating">
+    <input
+      type="text"
+      class="form-control"
+      name="youtubeId"
+      value="{{course.youtubeId}}"
+      placeholder="Youtube Id"
+    />
+    <label for="floatingInput">Youtube ID</label>
+  </div>
+  <div class="mt-3">
+    <button type="submit" class="btn btn-primary">Sửa</button>
+  </div>
+</form>
+
+<script>
+  document.title = "Sửa khóa học"
+</script>

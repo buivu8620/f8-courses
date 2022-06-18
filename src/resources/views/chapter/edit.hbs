@@ -1,0 +1,26 @@
+<div class="mt-4">
+  <h3>Sửa Chương '{{chapter.number}}. {{chapter.title}}'</h3>
+</div>
+<form method="POST" action="/chapter/{{chapter._id}}?_method=PUT">
+  <div class="form-floating mb-3">
+    <input
+      type="text"
+      class="form-control"
+      name="number"
+      value="{{chapter.number}}"
+    />
+    <label for="floatingInput">Chương số:</label>
+  </div>
+  <div class="form-floating mb-3">
+    <input
+      type="text"
+      class="form-control"
+      name="title"
+      value="{{chapter.title}}"
+    />
+    <label for="floatingInput">Tiêu đề chương</label>
+  </div>
+  <div class="mt-3">
+    <button type="submit" class="btn btn-primary">Sửa</button>
+  </div>
+</form>
